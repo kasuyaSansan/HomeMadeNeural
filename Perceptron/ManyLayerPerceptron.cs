@@ -31,11 +31,12 @@ namespace Perceptron
         /// <param name="num1st"></param>
         /// <param name="num2nd"></param>
         /// <param name="num3rd"></param>
-        public ManyLayerPerceptron(int[] numNeuron, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.Sigmoid)
+        public ManyLayerPerceptron(int[] numNeuron, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.Sigmoid, int batchSize = 100)
         {
             this.numNeuron = numNeuron;
             this.numLayer = numNeuron.Length;
             e = learnRate;
+            this.batchSize = batchSize;
             if (funcType == FUNC_TYPE.Sigmoid)
             {
                 activatFunc = NeuralFunc.Sigmoid;
@@ -106,6 +107,7 @@ namespace Perceptron
                 }
             }
 
+            // ReLUを使うときに発散しにくくするため、絶対値が大きすぎるときは係数を小さくする
             var coef = 1.0;
             var ratio = absMax / Math.Sqrt(2.0 / numNeuron.Max());
             if (ratio > 0.05)

@@ -93,9 +93,7 @@ namespace Perceptron
                 }
             }
 
-
             dEdyNext = new double[numNeuronUnderLayer];
-
             for (var i = 0; i < numNeuronUnderLayer; i++)
             {
                 dEdyNext[i] = 0;
@@ -118,10 +116,9 @@ namespace Perceptron
                 }
             }
 
+            // ReLUを使うときに発散しにくくする、絶対値が大きすぎるときは係数を小さくする
             var coef = 1.0;
-
             var ratio = absMax / Math.Sqrt(2.0 / numNeuron);
-
             if (ratio > 0.05)
             {
                 coef = 0.05 / ratio;
@@ -145,18 +142,19 @@ namespace Perceptron
         private List<TrainingData> sample = new List<TrainingData>();//学習サンプル
         private int numLayer;
 
-        private int batchSize = 100;
+        public int batchSize = 100;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="numNeurons"></param>
         /// <param name="funcType"></param>
-        public ManyLayerPerceptron2(IReadOnlyList<int> numNeurons, FUNC_TYPE funcType = FUNC_TYPE.Sigmoid)
+        public ManyLayerPerceptron2(IReadOnlyList<int> numNeurons, FUNC_TYPE funcType = FUNC_TYPE.Sigmoid, int batchSize = 100)
         {
             Layers = new List<FullyConnectedLayer>();
             numLayer = numNeurons.Count;
             numOutputLayer = numNeurons.Last();
+            this.batchSize = batchSize;
             var numNeuronsAnd0 = numNeurons.ToList();
             numNeuronsAnd0.Add(0);
             for (var i = 0; i < numNeurons.Count - 1; i++)

@@ -13,15 +13,17 @@ namespace PerceptronTest
         {
         }
 
-        [Test]
-        public void PercepTronSameResultTest()
+        [TestCase(2000)]
+        [TestCase(3000)]
+        [TestCase(100)]
+        public void PercepTronSameResultTest(int numLearn)
         {
             var inputSize = 2;
             var hiddenSize = 3;
             var outputSize = 1;
             var perceptron1 = new ThreeLayerPerceptron(inputSize,hiddenSize,outputSize);
-            var perceptron2 = new ManyLayerPerceptron(new []{inputSize,hiddenSize,outputSize});
-            var perceptron3 = new ManyLayerPerceptron2(new []{inputSize,hiddenSize,outputSize});
+            var perceptron2 = new ManyLayerPerceptron(new []{inputSize,hiddenSize,outputSize}, learnRate:0.001, funcType:FUNC_TYPE.Sigmoid, batchSize:1);
+            var perceptron3 = new ManyLayerPerceptron2(new []{inputSize,hiddenSize,outputSize}, funcType: FUNC_TYPE.Sigmoid, batchSize: 1);
 
             for (var i = 0; i < inputSize; i++)
             {
@@ -55,17 +57,18 @@ namespace PerceptronTest
             perceptron2.SetSample(trainingData);
             perceptron3.SetSample(trainingData);
 
-            perceptron1.Learn(10);
-            perceptron2.Learn(10);
-            perceptron3.Learn(10);
+            perceptron1.Learn(numLearn);
+            perceptron2.Learn(numLearn);
+            perceptron3.Learn(numLearn);
 
             var result1 = perceptron1.InputData(new List<double>() {0.5, 0.5});
             var result2 = perceptron2.InputData(new List<double>() { 0.5, 0.5 });
             var result3 = perceptron3.InputData(new [] { 0.5, 0.5 });
 
-            Console.WriteLine($@"1:{result1[0]}, 2:{result2[0]}, 3:{result3[0]}");
+            Assert.AreEqual((int)(result1[0] * 1000) , (int)(result2[0] * 1000));
 
-            //perceptron1.w1to2 = initialWeight;
+            Assert.AreEqual((int)(result2[0] * 1000), (int)(result3[0] * 1000));
+            Console.WriteLine($@"1:{result1[0]}, 2:{result2[0]}, 3:{result3[0]}");
         }
     }
 }
