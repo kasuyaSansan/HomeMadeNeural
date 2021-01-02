@@ -5,31 +5,50 @@ using MNIST.IO;
 
 namespace NeuralLib
 {
-    public enum MnistType
-    {
-        NORMAL, FASHION
-    }
-
     public class MnistLoader
     {
         private static string normalMnistFileName = "train-images-idx3-ubyte.gz";
-        private static string fashionMnistFileName = "t10k-images-idx3-ubyte.gz";
-
         private static string normalMnistLabelName = "train-labels-idx1-ubyte.gz";
 
 
-
-        public static (List<TrainingData> MnistData, List<TrainingData> MnistTest) ReadData(MnistType mnistType = MnistType.NORMAL, int numSample = 2000)
+        /// <summary>
+        /// MnistFilePath, MnistLabelFilePathを指定しないと、c:/data/minst/train-images-idx3-ubyte.gz, c:/data/minist/train-labels-idx1-ubyte.gz
+        /// から自動的にファイルを読み込みます。
+        /// </summary>
+        /// <param name="numSample"></param>
+        /// <param name="MnistFilePath"></param>
+        /// <param name="MnistLabelFilePath"></param>
+        /// <returns></returns>
+        public static (List<TrainingData> MnistData, List<TrainingData> MnistTest) ReadData(int numSample = 2000, string MnistFilePath = null, string MnistLabelFilePath = null)
         {
-            var useFileName = normalMnistFileName;
-            var useLabelFileName = normalMnistLabelName;
-            if (mnistType == MnistType.FASHION)
-                useFileName = fashionMnistFileName;
-            
-            var data = FileReaderMNIST.LoadImages($"c:/data/mnist/{useFileName}");
-            var label = FileReaderMNIST.LoadLabel($"c:/data/mnist/{useLabelFileName}");
+            var autoFileName = $"c:/data/mnist/{normalMnistFileName}";
+            var useFileName = autoFileName;
+            var autoLabelFileName = $"c:/data/mnist/{normalMnistLabelName}";
+            var useLabelFileName = autoLabelFileName;
 
-            var dData = data.Select(img => img.Cast<byte>().Select(d => d / 255.0));
+            if (!string.IsNullOrEmpty(MnistFilePath))
+            {
+                useFileName = MnistFilePath;
+            }
+            if (!string.IsNullOrEmpty(MnistLabelFilePath))
+            {
+                useLabelFileName = MnistLabelFilePath;
+            }
+
+            IEnumerable<IEnumerable<double>> dData;
+            byte[] label;
+            try
+            {
+                var data = FileReaderMNIST.LoadImages(useFileName);
+                label = FileReaderMNIST.LoadLabel(useLabelFileName);
+                dData = data.Select(img => img.Cast<byte>().Select(d => d / 255.0));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"ReadDataは引数で指定がない場合、{autoFileName}と{autoFileName}を自動的に参照します。" +
+                    $"ここに同名でファイルを置くか、ファイル名を指定してください\n" + e);
+                throw;
+            }
 
 
             var MnistData = new List<TrainingData>();
@@ -63,25 +82,5 @@ namespace NeuralLib
             result[n] = 1.0;
             return result;
         }
-
-
-        public static void PrintMnist(double[] data)
-        {
-            var width = 28;
-            var height = 28;
-            for (var i = 0; i < width; i++)
-            {
-                for (var j = 0; j < height; j++)
-                {
-                    Console.Write(Math.Round(data[i * width + j]) + " ");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine(@"
-
-
-");
-        }
-
     }
 }

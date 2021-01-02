@@ -65,9 +65,9 @@ namespace PerceptronTest
             var result2 = perceptron2.InputData(new List<double>() { 0.5, 0.5 });
             var result3 = perceptron3.InputData(new [] { 0.5, 0.5 });
 
-            Assert.AreEqual((int)(result1[0] * 1000) , (int)(result2[0] * 1000));
+            Assert.AreEqual(result1[0].ToString("G5") , result2[0].ToString("G5"));
 
-            Assert.AreEqual((int)(result2[0] * 1000), (int)(result3[0] * 1000));
+            Assert.AreEqual(result2[0].ToString("G5"), result3[0].ToString("G5"));
             Console.WriteLine($@"1:{result1[0]}, 2:{result2[0]}, 3:{result3[0]}");
         }
     }
