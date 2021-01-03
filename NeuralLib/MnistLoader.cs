@@ -19,7 +19,7 @@ namespace NeuralLib
         /// <param name="MnistFilePath"></param>
         /// <param name="MnistLabelFilePath"></param>
         /// <returns></returns>
-        public static (List<TrainingData> MnistData, List<TrainingData> MnistTest) ReadData(int numSample = 2000, string MnistFilePath = null, string MnistLabelFilePath = null)
+        public static List<TrainingData>  ReadData(int numSample = 2000, string MnistFilePath = null, string MnistLabelFilePath = null)
         {
             var autoFileName = $"c:/data/mnist/{normalMnistFileName}";
             var useFileName = autoFileName;
@@ -57,30 +57,15 @@ namespace NeuralLib
             int i = 0;
             foreach (var d in dData)
             {
-                if (i % 2 == 0)
-                {
-                    MnistData.Add(new TrainingData(d.ToList(), CreateOneHotVector(10, label[i])));
-                }
-                else
-                {
-                    MnistData.Add(new TrainingData(d.ToList(), CreateOneHotVector(10, label[i])));
-                }
-
+                MnistData.Add(new TrainingData(d.ToList(), NeuralFunc.CreateOneHotVector(10, label[i])));
                 if (i++ > numSample)
                 {
                     break;
                 }
             }
 
-            return (MnistData, MnistTest);
+            return MnistData;
 
-        }
-
-        private static double[] CreateOneHotVector(int maxVal, int n)
-        {
-            var result = new double[maxVal];
-            result[n] = 1.0;
-            return result;
         }
     }
 }

@@ -110,6 +110,14 @@ namespace NeuralLib
             return a;
         }
 
+
+        public static double[] CreateOneHotVector(int numClass, int oneIndex)
+        {
+            var result = new double[numClass];
+            result[oneIndex] = 1.0;
+            return result;
+        }
+
         public static List<List<T>> SplitToBatch<T>(IEnumerable<T> sample, int n)
         {
             return sample.OrderBy(d => Guid.NewGuid())
