@@ -20,7 +20,7 @@ namespace Perceptron
         private delegate double differentialActivationFunction(double x, double param);
         private differentialActivationFunction differentialFunc;
         public double e = 0.001;
-        private double T = 2;
+        private double T = 1.0;
 
         public FullyConnectedLayer(int numNeuron, int numNeuronUnderLayer, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.Sigmoid)
         {

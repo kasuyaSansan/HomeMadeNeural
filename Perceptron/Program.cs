@@ -12,7 +12,7 @@ namespace Perceptron
             //ThreeLayerPerceptron perceptron = new ThreeLayerPerceptron(28*28,100, 10);
             var perceptron = new ManyLayerPerceptron2(new[]{28*28,50,10});
             perceptron.SetSample(data.ToList());
-            perceptron.Learn(500);
+            perceptron.Learn(300);
 
             var test = MnistLoader.ReadData(1000, "c:/data/mnist/t10k-images-idx3-ubyte.gz", "c:/data/mnist/t10k-labels-idx1-ubyte.gz");
             var successCount = 0.0;

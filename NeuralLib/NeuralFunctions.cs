@@ -15,9 +15,19 @@ namespace NeuralLib
     public delegate float DifferentialActiveFunctionf(float x, float param);
     public static class NeuralFunc
     {
+        public static double Sigmoid(double x)
+        {
+            return Sigmoid(x, 1);
+        }
+
         public static double Sigmoid(double x, double a)
         {
             return (1 / (1 + Math.Exp(-a * x)));
+        }
+
+        public static double Dsigmoid(double x)
+        {
+            return Dsigmoid(x, 1);
         }
 
         public static double Dsigmoid(double x, double a)
@@ -74,11 +84,22 @@ namespace NeuralLib
             return dydx;
         }
 
+        public static float Sigmoid(float x)
+        {
+            return Sigmoid(x, 1);
+        }
+
 
         public static float Sigmoid(float x, float a)
         {
             return (float)(1 / (1 + Math.Exp(-a * x)));
         }
+
+        public static float Dsigmoid(float x)
+        {
+            return Dsigmoid(x, 1);
+        }
+
 
         public static float Dsigmoid(float x, float a)
         {

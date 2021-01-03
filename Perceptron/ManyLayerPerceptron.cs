@@ -15,7 +15,7 @@ namespace Perceptron
         private int[] numNeuron;
 
         public double e = 0.001;
-        private double T = 2;
+        private double T = 1.0;
         private int numLayer;
 
         private delegate double ActivationFunction(double x, double param);

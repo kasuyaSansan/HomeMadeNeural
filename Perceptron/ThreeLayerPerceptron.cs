@@ -18,7 +18,7 @@ namespace Perceptron
         private List<TrainingData> sample = new List<TrainingData>();//学習サンプル
         private int num1, num2, num3;
         public double e;
-        private double T = 2;
+        private double T = 1.0;
         private int batchSize = 100;
 
         /// <summary>
