@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Perceptron", "Perceptron\Perceptron.csproj", "{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralLib", "NeuralLib\NeuralLib.csproj", "{63D39A49-B57A-4041-9B1F-6F07D117B2C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PerceptronTest", "PerceptronTest\PerceptronTest.csproj", "{784F196B-A39E-4348-B2F6-8BC775FC5641}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Debug|x64.ActiveCfg = Debug|x64
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Debug|x64.Build.0 = Debug|x64
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Debug|x86.ActiveCfg = Debug|x86
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Debug|x86.Build.0 = Debug|x86
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Release|x64.ActiveCfg = Release|x64
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Release|x64.Build.0 = Release|x64
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Release|x86.ActiveCfg = Release|x86
+		{2BDCA050-990E-4BF0-8BA6-F1E0F1E124B5}.Release|x86.Build.0 = Release|x86
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Debug|x64.ActiveCfg = Debug|x64
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Debug|x64.Build.0 = Debug|x64
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Debug|x86.ActiveCfg = Debug|x86
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Debug|x86.Build.0 = Debug|x86
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Release|x64.ActiveCfg = Release|x64
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Release|x64.Build.0 = Release|x64
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Release|x86.ActiveCfg = Release|x86
+		{63D39A49-B57A-4041-9B1F-6F07D117B2C5}.Release|x86.Build.0 = Release|x86
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Debug|x64.Build.0 = Debug|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Debug|x86.ActiveCfg = Debug|x86
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Debug|x86.Build.0 = Debug|x86
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Release|x64.ActiveCfg = Release|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Release|x64.Build.0 = Release|Any CPU
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Release|x86.ActiveCfg = Release|x86
+		{784F196B-A39E-4348-B2F6-8BC775FC5641}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C52A4C55-DB6C-4DA1-819C-D6A772E762EC}
+	EndGlobalSection
+EndGlobal
