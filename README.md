@@ -1,5 +1,8 @@
 # HomeMadeNeural
 
+## DeepLearningをC#で作っていくプロジェクト
+
+## お試しし方
 + プロジェクトをクローンし、VisualStudio2019で開く
 + http://yann.lecun.com/exdb/mnist/
 上記のページから4つのMNISTのgzファイルをダウンロードしてきて、どこかに保存し（デフォルトはc:/data/mnist/の下）
