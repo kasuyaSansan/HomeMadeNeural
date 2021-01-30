@@ -50,9 +50,7 @@ namespace NeuralLib
                 throw;
             }
 
-
             var MnistData = new List<TrainingData>();
-            var MnistTest = new List<TrainingData>();
 
             int i = 0;
             foreach (var d in dData)
@@ -65,7 +63,33 @@ namespace NeuralLib
             }
 
             return MnistData;
+        }
 
+
+        /// <summary>
+        /// Mnistを画像形式(NeuralImage)で読み込みます
+        /// </summary>
+        /// <param name="numSample"></param>
+        /// <param name="MnistFilePath"></param>
+        /// <param name="MnistLabelFilePath"></param>
+        /// <returns></returns>
+        public static List<TrainingImageData> ReadImageData(int numSample = 2000, string MnistFilePath = null, string MnistLabelFilePath = null)
+        {
+
+            var data = ReadData(numSample, MnistFilePath, MnistLabelFilePath); 
+            var MnistData = new List<TrainingImageData>();
+
+            int i = 0;
+            foreach (var d in data)
+            {
+                MnistData.Add(new TrainingImageData(new NeuralImage(d.Data.ToArray(), 28, 28), new NeuralImage(d.Answer.ToArray(), 10, 1)));
+                if (i++ > numSample)
+                {
+                    break;
+                }
+            }
+
+            return MnistData;
         }
     }
 }

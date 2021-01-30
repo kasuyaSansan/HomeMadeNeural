@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MNIST.IO" Version="1.0.1" />
+    <PackageReference Include="OpenCvSharp4" Version="4.5.1.20201229" />
   </ItemGroup>
 
 </Project>
