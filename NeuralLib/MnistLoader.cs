@@ -91,5 +91,21 @@ namespace NeuralLib
 
             return MnistData;
         }
+
+        /// <summary>
+        /// ministDataを可視化
+        /// </summary>
+        /// <param name="mnistData"></param>
+        public static void PrintMnist(List<double> mnistData)
+        {
+            for(int y =0; y < 28; y++)
+            {
+                for(int x=0; x < 28; x++)
+                {
+                    Console.Write((int)Math.Round(mnistData[y * 28 + x]) + " ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }

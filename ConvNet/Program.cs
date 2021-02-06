@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using NeuralLib;
+using System.IO;
 
 namespace ConvNet
 {
@@ -27,12 +28,14 @@ namespace ConvNet
     {
         static void Main(string[] args)
         {
-            var data =MnistLoader.ReadImageData(2000, "c:/data/mnist/train-images-idx3-ubyte.gz", "c:/data/mnist/train-labels-idx1-ubyte.gz");
+            var currentPath = Directory.GetCurrentDirectory();
+            var mnistPath =currentPath + "/../../../../../NeuralLib/kuzushiji_MNIST";
+            var data =MnistLoader.ReadImageData(4000, Path.Combine(mnistPath, "train-images-idx3-ubyte.gz"), Path.Combine(mnistPath, "train-labels-idx1-ubyte.gz"));
 
             var leNet = new LeNet();
             leNet.SetSample(data);
-            leNet.Learn(100);
-            var test = MnistLoader.ReadImageData(1000, "c:/data/mnist/t10k-images-idx3-ubyte.gz", "c:/data/mnist/t10k-labels-idx1-ubyte.gz");
+            leNet.Learn(200);
+            var test = MnistLoader.ReadImageData(1000, Path.Combine(mnistPath, "t10k-images-idx3-ubyte.gz"), Path.Combine(mnistPath, "t10k-labels-idx1-ubyte.gz"));
             var successCount = 0.0;
             var totalCount = 0.0;
             foreach (var testData in test)

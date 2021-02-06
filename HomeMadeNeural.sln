@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralLib", "NeuralLib\Neur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PerceptronTest", "PerceptronTest\PerceptronTest.csproj", "{784F196B-A39E-4348-B2F6-8BC775FC5641}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvNet", "ConvNet\ConvNet.csproj", "{8C89EA08-C30F-4A76-8C50-8BE9B25A64A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvNet", "ConvNet\ConvNet.csproj", "{8C89EA08-C30F-4A76-8C50-8BE9B25A64A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
