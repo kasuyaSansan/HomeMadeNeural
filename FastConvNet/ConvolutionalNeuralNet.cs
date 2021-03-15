@@ -14,7 +14,6 @@ namespace FastConvNet
         public abstract void updateWeight();
         public abstract void MergeDeltaWeights(List<Layer> layers);
         public abstract Layer Copy();
-
         public int underWidth;
         public int underHeight;
         public int underPlane;
@@ -26,8 +25,6 @@ namespace FastConvNet
         public NeuralImage outputs;
     }
 
-
- 
     /// <summary>
     /// このクラスのlayersにLayerクラスのインスタンスを追加していってニューラルネットを作る
     /// </summary>
@@ -149,7 +146,7 @@ namespace FastConvNet
 
 
         /// <summary>
-        /// 学習を実行
+        /// 並列に学習を実行
         /// </summary>
         /// <param name="numRepeat"></param>
         public void LearnParallel(int numRepeat, int numParallel, int batchSize = 128)

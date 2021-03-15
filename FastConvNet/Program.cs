@@ -38,7 +38,6 @@ namespace FastConvNet
             layers.Add(new MaxPoolingLayer(3, 2, layers.Last()));
             layers.Add(new ConvolutionalMnLayer3x3(30, layers.Last(), learnRate));
             layers.Add(new ActivationLayer(layers.Last(), learnRate, FUNC_TYPE.ReLU));
-
             layers.Add(new MaxPoolingLayer(3, 2, layers.Last().nextWidth, layers.Last().nextHeight, layers.Last().nextPlane));
             layers.Add(new FullyConnectedLayer(120, layers.Last(), learnRate, FUNC_TYPE.LeakyReLU));
             layers.Add(new FullyConnectedLayer(84, layers.Last(), learnRate, FUNC_TYPE.LeakyReLU));
