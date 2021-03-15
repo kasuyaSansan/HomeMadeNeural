@@ -1,8 +1,14 @@
-# HomeMadeNeural
+﻿# HomeMadeNeural
 
 ## DeepLearningをC#で作っていくプロジェクト
 
 ## お試しし方
+
+### ちょっと速い&高度なコンボリューショナルネット(VGGなど）
++ プロジェクトをクローンし、VisualStudio2019で開く
++ FastConvNetプロジェクトのProgram.csを起動するとサンプルのVGG(コンボリューション3回(ReLUによるアクティベーション含む）、全結合層2回、SoftMax層1回のシンプルなもの)を動作させることができます。
++ 2時間ぐらいで学習が終わります
+
 
 ### コンボリューショナルネット
 + プロジェクトをクローンし、VisualStudio2019で開く
