@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace NeuralLib
@@ -11,7 +10,6 @@ namespace NeuralLib
         public int width;
         public int height;
         public int plane;
-
 
         public NeuralImage(int plane, int width, int height)
         {
@@ -73,7 +71,6 @@ namespace NeuralLib
             }
 
             this.data = arrayData;
-
         }
 
 
@@ -125,8 +122,6 @@ namespace NeuralLib
             var newImg = new NeuralImage(this.plane, this.width + 2 * paddingLength, this.height + 2 * paddingLength);
             for (int p = 0; p < plane; p++)
             {
-
-
                 for (int i = 0; i < height; i++)
                 {
                     for (int j = 0; j < width; j++)
@@ -172,8 +167,6 @@ namespace NeuralLib
             }
             return new NeuralImage(result);
         }
-
-
 
 
         public NeuralImage ApplyFilters(double[][] filters, int length, int stride)
@@ -225,18 +218,8 @@ namespace NeuralLib
                                     continue;
                                 if (data[i][y, x] > outputData[i][ypos, xpos])
                                 {
-
-
                                     outputData[i][ypos, xpos] = data[i][y, x];
                                     argMax = (y, x);
-                                    //if (argMaxMap.ContainsKey((i, ypos, xpos)))
-                                    //{
-                                    //    argMaxMap[(i, ypos, xpos)] = (y, x);
-                                    //}
-                                    //else
-                                    //{
-                                    //    argMaxMap.Add((i, ypos, xpos), (y, x));
-                                    //}
                                 }
                                 x++;
                             }
@@ -288,8 +271,6 @@ namespace NeuralLib
                 {
                     var sy = centerY - halfLength;
                     var ey = sy + length;
-
-                    // var centerX = xpos * stride + halfLength;
                     var sx = xpos * stride;
                     var ex = sx + length;
                     var m = 0;
@@ -371,8 +352,6 @@ namespace NeuralLib
                     {
                         var sy = centerY - halfLength;
                         var ey = sy + length;
-
-                        // var centerX = xpos * stride + halfLength;
                         var sx = xpos * stride;
                         var ex = sx + length;
                         var m = 0;

@@ -12,7 +12,6 @@ namespace NeuralLib
         public int height;
         public int plane;
 
-
         public NeuralImageSingle(int plane, int width, int height)
         {
             this.width = width;
@@ -84,9 +83,7 @@ namespace NeuralLib
             }
 
             this.data = arrayData;
-
         }
-
 
         public NeuralImageSingle(List<List<double>> data)
         {
@@ -186,10 +183,8 @@ namespace NeuralLib
                     }
                 }
             }
-
             return newImg;
         }
-
 
 
         public NeuralImageSingle MatrixAppry(float[,][] filters, int length, int stride, int nextPlane)
@@ -357,17 +352,14 @@ namespace NeuralLib
 
             return stateData;
         }
+
         public float[,] ApplyFilterOne(float[] filter, int length, int stride, int planeIndex)
         {
             var halfLength = (length - 1) / 2;
-
-
             var newWidth = (int)Math.Floor((width - length + stride) / (double)stride);
             var newHeight = (int)Math.Floor((height - length + stride) / (double)stride);
             var filterPix = length * length;
             var imgArea = new float[filterPix];
-
-
             var stateData = new float[newHeight, newWidth];
             var dataPlane = data[planeIndex];
 
@@ -402,7 +394,6 @@ namespace NeuralLib
         public NeuralImageSingle ApplyFilter(float[] filter, int length, int stride)
         {
             var halfLength = (length - 1) / 2;
-
             var stateData = new float[plane][,];
             var newWidth = (int)Math.Floor((width - length + stride) / (double)stride);
             var newHeight = (int)Math.Floor((height - length + stride) / (double)stride);
@@ -411,10 +402,8 @@ namespace NeuralLib
 
             for (var i = 0; i < plane; i++)
             {
-
                 stateData[i] = new float[newHeight, newWidth];
                 var dataPlane = data[i];
-
 
                 for (var ypos = 0; ypos < newHeight; ypos++)
                 {

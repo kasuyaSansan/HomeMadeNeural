@@ -19,7 +19,6 @@ namespace FastConvNet
         private DifferentialActiveFunction differentialFunc;
         private double T = 2;
 
-
         public FullyConnectedLayer(int numNeuron, Layer lastLayer, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.Sigmoid)
             : this(numNeuron, lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane, learnRate, funcType) { }
 
@@ -244,7 +243,8 @@ namespace FastConvNet
         public Dictionary<(int i, int ypos, int xpos), (int y, int x)> argMaxMap;
         public double learnRate;
 
-        public MaxPoolingLayer(int filterSize, int stride, Layer lastLayer) : this(filterSize, stride, lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane) { }
+        public MaxPoolingLayer(int filterSize, int stride, Layer lastLayer) 
+            : this(filterSize, stride, lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane) { }
 
         public MaxPoolingLayer(int filterSize, int stride, int underWidth, int underHeight, int underPlane)
         {
@@ -270,7 +270,7 @@ namespace FastConvNet
 
         public override Layer Copy()
         {
-            var copy = new MaxPoolingLayer(this.filterSize, this.stride, this.underWidth, this.underHeight, this.underPlane);
+            var copy = new MaxPoolingLayer(filterSize, stride, underWidth, underHeight, underPlane);
             return copy;
         }
 
@@ -492,7 +492,8 @@ namespace FastConvNet
         public int numNeuron;
         public double learnRate;
 
-        public SoftMaxLayer(int numNeuron, Layer lastLayer, double learnRate) : this(numNeuron, lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane, learnRate) { }
+        public SoftMaxLayer(int numNeuron, Layer lastLayer, double learnRate) 
+            : this(numNeuron, lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane, learnRate) { }
 
         public SoftMaxLayer(int numNeuron, int underWidth, int underHeight, int underPlane, double learnRate = 0.001)
         {
@@ -505,6 +506,7 @@ namespace FastConvNet
             nextPlane = 1;
             states = new double[numNeuron];
             outputArray = new double[numNeuron];
+            this.learnRate = learnRate;
 
             dEdyNext = new double[underPlane][,];
             outputs = new NeuralImage(1, numNeuron, 1);
@@ -1148,11 +1150,8 @@ namespace FastConvNet
         private DifferentialActiveFunction differentialFunc;
         private FUNC_TYPE funcType;
 
-        public ActivationLayer(Layer lastLayer, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.ReLU) : this(lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane, learnRate, funcType)
-        {
-
-        }
-
+        public ActivationLayer(Layer lastLayer, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.ReLU) 
+            : this(lastLayer.nextWidth, lastLayer.nextHeight, lastLayer.nextPlane, learnRate, funcType){ }
         public ActivationLayer(int underWidth, int underHeight, int underPlane, double learnRate = 0.001, FUNC_TYPE funcType = FUNC_TYPE.ReLU)
         {
             this.dEdyNext = new double[underPlane][,];
