@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MNIST.IO" Version="1.0.1" />
+    <ProjectReference Include="..\NeuralLib\NeuralLib.csproj" />
   </ItemGroup>
 
 </Project>
