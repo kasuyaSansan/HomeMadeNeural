@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using MNIST.IO;
 
 namespace NeuralLib
@@ -45,8 +46,14 @@ namespace NeuralLib
             }
             catch (Exception e)
             {
-                Console.WriteLine($"ReadDataは引数で指定がない場合、{autoFileName}と{autoFileName}を自動的に参照します。" +
-                    $"ここに同名でファイルを置くか、ファイル名を指定してください\n" + e);
+                if(MnistFilePath == null || MnistLabelFilePath == null)
+                    Console.WriteLine($"ReadDataは引数で指定がない場合、{autoFileName}と{autoFileName}を自動的に参照します。" +
+                        $"ここに同名でファイルを置くか、ファイル名を指定してください\n" + e);
+                else
+                {
+                    Console.WriteLine($"{MnistFilePath}、および、{MnistLabelFilePath}が指定され、\n{Path.GetFullPath(useFileName)}、および、{Path.GetFullPath(useLabelFileName)}を" +
+                        $"読み込もうとしましたが、読み込むことができませんでした。上記のパスにファイルが存在するかまたはアクセス権限を確認ください");
+                }
                 throw;
             }
 
